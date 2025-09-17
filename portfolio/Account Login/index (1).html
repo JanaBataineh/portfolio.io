@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+
+        .main {
+            background-image: url(background.jpg);
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-form {
+
+            background-color: rgba(252, 251, 251, 0.6);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+            width: 320px;
+
+        }
+
+        .login-form h2 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .login-form input[type="text"] {
+
+            padding: 15px 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background-color: rgba(252, 251, 251, 0.6);
+            border: none;
+           
+        }
+        .btn{
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0; 
+        }
+        .btn input{
+         padding: 15px 0;
+         background-color: rgb(7, 82, 80);
+         color: white;
+         border: none;
+         border-radius: 2px;
+
+        }
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+        .footer a{
+            text-decoration: none;
+        }
+        .footer .check{
+            display: flex;
+            align-items: center;
+          
+        }
+        .check label{
+            margin-left: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form class="login-form">
+            <h2>Account Login</h2>
+            <input type="text" placeholder="user name">
+            <input type="text" placeholder="password">
+           <div class="btn">
+                        <input type="submit" value="LOGIN">
+           </div>
+    
+         
+
+            <div class="footer">
+                <div class="check">
+                    <input type="checkbox">
+                    <label> remember me</label>
+                </div>
+                <a href="#">Forgot Password?</a>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

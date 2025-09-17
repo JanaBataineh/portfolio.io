@@ -1,0 +1,225 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: #fff;
+        color: #333;
+        direction: rtl;
+    }
+
+    #image-section {
+        height: 100vh;
+        background-image: url('niqap.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: transparent;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    header.scrolled {
+        background-color: #462a26;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+        width: 100%;
+        height: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .navbar .logo a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: 'Mishafi', serif;
+        text-decoration: none;
+        color: #fff; /* إضافة لون أبيض للنص */
+    }
+
+    .navbar .links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .navbar .links a {
+        color: #fff; /* لون أبيض لروابط القائمة */
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+    }
+
+    .navbar .links a:hover {
+        color: #f0f0f0; /* تغيير طفيف عند التحويم */
+    }
+
+    .navbar .toggle_btn {
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: none;
+    }
+
+    .action_btn {
+        background-color: #462a26;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .action_btn:hover {
+        transform: scale(1.05);
+        background-color: #cf7f79;
+    }
+
+    .dropdown_menu {
+        display: none;
+        position: absolute;
+        right: 2rem;
+        top: 60px;
+        width: 300px;
+        background: rgba(70, 42, 38, 0.95);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: height 0.2s ease;
+    }
+
+    .dropdown_menu.open {
+        display: block;
+        height: auto;
+    }
+
+    .dropdown_menu li {
+        padding: 0.7rem;
+        text-align: center;
+        list-style: none;
+    }
+
+    .dropdown_menu a {
+        color: #fff !important; /* تأكيد على اللون الأبيض */
+        text-decoration: none;
+    }
+
+    /* التأكد من بقاء النص أبيض عند التمرير */
+    header.scrolled .navbar .logo a,
+    header.scrolled .navbar .links a {
+        color: #fff;
+    }
+
+    section#hero {
+        height: calc(100vh - 60px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    #content-section {
+        padding: 40px 20px;
+        text-align: right;
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 600px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+
+    .card .header {
+        margin-bottom: 20px;
+    }
+
+    .card .header h5 {
+        font-size: 1.3rem;
+        color: #462a26;
+        line-height: 1.5;
+    }
+
+    .card .container h6 {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .wow {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 992px) {
+        .navbar .links,
+        .navbar .action_btn {
+            display: none;
+        }
+        
+        .navbar .toggle_btn {
+            display: block;
+        }
+        
+        .card-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .card {
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        #hero h1 {
+            font-size: 2rem;
+        }
+        
+        .dropdown_menu {
+            left: 20px;
+            right: 20px;
+            width: auto;
+        }
+    }

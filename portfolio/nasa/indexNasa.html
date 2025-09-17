@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExoAI - اكتشاف الكواكب الخارجية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styleNasa.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-white overflow-x-hidden">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="screen active space-bg">
+        <div class="min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Background Stars -->
+            <div id="stars-container" class="absolute inset-0"></div>
+            
+            <!-- Main Content -->
+            <div class="text-center z-10">
+                <div class="rocket-spin mb-8">
+                    <div class="w-24 h-24 mx-auto bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl mb-2 gradient-text fade-in">ExoAI</h1>
+                <p class="text-cyan-200 text-lg fade-in">اكتشف الكواكب خارج النظام الشمسي</p>
+                
+                <div class="mt-8 fade-in">
+                    <i class="fas fa-star text-purple-400 text-2xl" style="animation: pulse 2s infinite;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding Screens -->
+    <div id="onboarding-screen" class="screen space-bg">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="w-full max-w-md">
+                <div id="onboarding-content" class="text-center">
+                    <!-- Content will be dynamically generated -->
+                </div>
+                
+                <!-- Progress indicators -->
+                <div class="flex justify-center space-x-2 mb-8">
+                    <div class="progress-dot w-2 h-2 rounded-full bg-gray-600" data-index="0"></div>
+                    <div class="progress-dot w-2 h-2 rounded-full bg-gray-600" data-index="1"></div>
+                    <div class="progress-dot w-2 h-2 rounded-full bg-gray-600" data-index="2"></div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex justify-between items-center">
+                    <button id="prev-btn" class="btn btn-ghost" disabled>
+                        <i class="fas fa-chevron-right mr-2"></i>
+                        السابق
+                    </button>
+                    <button id="next-btn" class="btn btn-primary">
+                        التالي
+                        <i class="fas fa-chevron-left ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen space-bg">
+        <div class="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+            <!-- Background Stars -->
+            <div id="login-stars" class="absolute inset-0"></div>
+            
+            <div class="w-full max-w-md z-10">
+                <div class="text-center mb-8 fade-in">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-3xl mb-2 gradient-text">ExoAI</h1>
+                    <p class="text-gray-300">تسجيل الدخول</p>
+                </div>
+                
+                <div class="glass-card rounded-lg">
+                    <h2 class="text-center text-white mb-6">تسجيل الدخول</h2>
+                    
+                    <form id="login-form" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-300 mb-2">البريد الإلكتروني</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope absolute right-3 top-4 text-gray-400"></i>
+                                <input type="email" class="input-field pr-10" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-300 mb-2">كلمة المرور</label>
+                            <div class="relative">
+                                <i class="fas fa-lock absolute right-3 top-4 text-gray-400"></i>
+                                <input type="password" class="input-field pr-10" placeholder="أدخل كلمة المرور" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full">
+                            تسجيل الدخول
+                        </button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-slate-600"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-slate-800 text-gray-400">أو</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-secondary w-full mt-4" onclick="navigateToHome()">
+                            <i class="fas fa-globe mr-2"></i>
+                            تسجيل الدخول بحساب NASA
+                        </button>
+                    </div>
+                    
+                    <p class="text-center text-gray-400 text-sm mt-4">
+                        ليس لديك حساب؟ 
+                        <a href="#" class="text-cyan-400 hover:text-cyan-300">إنشاء حساب</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen space-bg">
+        <!-- Header -->
+        <div class="bg-slate-900/50 backdrop-blur-lg border-b border-slate-700">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-telescope text-white"></i>
+                    </div>
+                    <h1 class="text-xl text-white">ExoAI</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="btn btn-ghost">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn btn-ghost">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto p-4">
+            <!-- Welcome Section -->
+            <div class="text-center py-12 fade-in">
+                <div class="relative mb-8">
+                    <img src="https://images.unsplash.com/photo-1504812333783-63b845853c20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGFjZSUyMG5lYnVsYSUyMGdhbGF4eXxlbnwxfHx8fDE3NTc5Mzg5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                         alt="Space nebula" 
+                         class="w-full h-64 object-cover rounded-xl opacity-30">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <h2 class="text-4xl mb-4 gradient-text">مرحباً بك في ExoAI</h2>
+                            <p class="text-xl text-gray-300">اكتشف الكواكب خارج النظام الشمسي باستخدام الذكاء الاصطناعي</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Action Cards -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12 fade-in">
+                <div class="card cursor-pointer" onclick="navigateToAnalysis()">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-search text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white">البحث في قواعد البيانات</h3>
+                            <p class="text-gray-400 text-sm">استكشف بيانات NASA المتاحة</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">ابحث في مجموعات البيانات الفلكية المتاحة من ناسا وابدأ تحليل الكواكب الخارجية</p>
+                    <button class="btn btn-primary w-full">
+                        ابدأ البحث
+                        <i class="fas fa-search ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="card cursor-pointer" onclick="navigateToAnalysis()">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-upload text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white">رفع البيانات</h3>
+                            <p class="text-gray-400 text-sm">حلل بياناتك الخاصة</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">ارفع ملفات CSV أو JSON الخاصة بك لتحليلها باستخدام خوارزميات الذكاء الاصطناعي</p>
+                    <button class="btn btn-primary w-full">
+                        رفع الملفات
+                        <i class="fas fa-upload ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Recent Discoveries -->
+            <div class="mb-8 fade-in">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl text-white flex items-center">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>
+                        الاكتشافات الحديثة
+                    </h3>
+                    <button class="btn btn-ghost text-cyan-400">عرض الكل</button>
+                </div>
+                
+                <div class="space-y-4" id="recent-discoveries">
+                    <!-- Recent discoveries will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
+                <button class="btn btn-secondary h-20 flex flex-col items-center justify-center" onclick="navigateToAnalysis()">
+                    <i class="fas fa-brain text-xl mb-2"></i>
+                    تحليل AI
+                </button>
+                <button class="btn btn-secondary h-20 flex flex-col items-center justify-center">
+                    <i class="fas fa-star text-xl mb-2"></i>
+                    المفضلة
+                </button>
+                <button class="btn btn-secondary h-20 flex flex-col items-center justify-center">
+                    <i class="fas fa-file-alt text-xl mb-2"></i>
+                    التقارير
+                </button>
+                <button class="btn btn-secondary h-20 flex flex-col items-center justify-center">
+                    <i class="fas fa-bolt text-xl mb-2"></i>
+                    سريع
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Analysis Screen -->
+    <div id="analysis-screen" class="screen space-bg">
+        <!-- Header -->
+        <div class="bg-slate-900/50 backdrop-blur-lg border-b border-slate-700">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <button class="btn btn-ghost" onclick="navigateToHome()">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        العودة
+                    </button>
+                    <h1 class="text-xl text-white">تحليل البيانات</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto p-4">
+            <div class="space-y-8 fade-in">
+                <!-- Dataset Selection -->
+                <div class="card">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-database text-cyan-400 text-xl"></i>
+                        <h2 class="text-xl text-white">اختيار مجموعة البيانات</h2>
+                    </div>
+                    
+                    <select id="dataset-select" class="input-field mb-4">
+                        <option value="">اختر مجموعة البيانات</option>
+                        <option value="kepler">Kepler Mission Data</option>
+                        <option value="tess">TESS Survey Data</option>
+                        <option value="trappist">TRAPPIST-1 System</option>
+                    </select>
+                    
+                    <div id="dataset-info" class="hidden">
+                        <div class="glass-card rounded-lg p-4">
+                            <h3 id="dataset-name" class="text-white mb-2"></h3>
+                            <p id="dataset-description" class="text-gray-300 text-sm mb-3"></p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span id="dataset-size" class="badge badge-success"></span>
+                                <span id="dataset-planets" class="badge badge-success"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Algorithm Selection -->
+                <div class="card">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-brain text-purple-400 text-xl"></i>
+                        <h2 class="text-xl text-white">اختيار خوارزمية الذكاء الاصطناعي</h2>
+                    </div>
+                    
+                    <select id="algorithm-select" class="input-field mb-4">
+                        <option value="">اختر الخوارزمية</option>
+                        <option value="neural-network">الشبكة العصبية</option>
+                        <option value="random-forest">Random Forest</option>
+                        <option value="svm">Support Vector Machine</option>
+                    </select>
+                    
+                    <div id="algorithm-info" class="hidden">
+                        <div class="glass-card rounded-lg p-4">
+                            <h3 id="algorithm-name" class="text-white mb-2"></h3>
+                            <p id="algorithm-description" class="text-gray-300 text-sm mb-3"></p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span id="algorithm-accuracy" class="badge badge-success"></span>
+                                <span id="algorithm-speed" class="badge badge-warning"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analysis Controls -->
+                <div class="card">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-cogs text-orange-400 text-xl"></i>
+                        <h2 class="text-xl text-white">إعدادات التحليل</h2>
+                    </div>
+                    
+                    <div id="analysis-controls">
+                        <button id="start-analysis" class="btn btn-primary w-full" onclick="startAnalysis()" disabled>
+                            <i class="fas fa-play mr-2"></i>
+                            بدء التحليل
+                        </button>
+                    </div>
+                    
+                    <div id="analysis-progress" class="hidden">
+                        <div class="flex items-center justify-center space-x-3 text-cyan-400 mb-4">
+                            <i class="fas fa-spinner fa-spin text-xl"></i>
+                            <span>جاري تحليل البيانات...</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mb-4">
+                            <div id="progress-bar" class="progress-bar bg-gradient-to-r from-purple-500 to-cyan-500 h-2 rounded-full"></div>
+                        </div>
+                        <p id="progress-text" class="text-center text-gray-400 text-sm">التقدم: 0%</p>
+                    </div>
+                    
+                    <div id="analysis-complete" class="hidden text-center">
+                        <div class="flex items-center justify-center space-x-3 text-green-400 mb-4">
+                            <i class="fas fa-check-circle text-2xl"></i>
+                            <span class="text-xl">اكتمل التحليل بنجاح!</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">تم العثور على 23 كوكباً محتملاً صالحاً للحياة</p>
+                        <button class="btn btn-primary" onclick="navigateToResults()">
+                            <i class="fas fa-chart-bar mr-2"></i>
+                            عرض النتائج
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen space-bg">
+        <!-- Header -->
+        <div class="bg-slate-900/50 backdrop-blur-lg border-b border-slate-700">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <button class="btn btn-ghost" onclick="navigateToAnalysis()">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        العودة
+                    </button>
+                    <h1 class="text-xl text-white">نتائج التحليل</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-filter mr-2"></i>
+                        تصفية
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download mr-2"></i>
+                        تصدير
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto p-4">
+            <div class="fade-in">
+                <!-- Summary Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="card text-center">
+                        <div class="text-2xl text-cyan-400 mb-1">23</div>
+                        <div class="text-gray-300 text-sm">كواكب مكتشفة</div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="text-2xl text-green-400 mb-1">4</div>
+                        <div class="text-gray-300 text-sm">صالحة للحياة</div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="text-2xl text-purple-400 mb-1">87%</div>
+                        <div class="text-gray-300 text-sm">معدل الدقة</div>
+                    </div>
+                    <div class="card text-center">
+                        <div class="text-2xl text-yellow-400 mb-1">2.3</div>
+                        <div class="text-gray-300 text-sm">ساعات المعالجة</div>
+                    </div>
+                </div>
+                
+                <!-- Tabs -->
+                <div class="mb-6">
+                    <div class="flex space-x-4 mb-6">
+                        <button class="tab-btn active" data-tab="planets">الكواكب المكتشفة</button>
+                        <button class="tab-btn" data-tab="analytics">التحليلات</button>
+                        <button class="tab-btn" data-tab="comparison">المقارنة مع الأرض</button>
+                    </div>
+                </div>
+                
+                <!-- Planets Tab -->
+                <div id="planets-tab" class="tab-content active">
+                    <div class="space-y-4" id="discovered-planets">
+                        <!-- Planets will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Analytics Tab -->
+                <div id="analytics-tab" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="card">
+                            <h3 class="text-white flex items-center mb-4">
+                                <i class="fas fa-chart-bar mr-2"></i>
+                                توزيع احتمالية الصلاحية للحياة
+                            </h3>
+                            <div class="chart-container">
+                                <i class="fas fa-chart-bar text-4xl"></i>
+                                <p class="mt-2">مخطط توزيع البيانات</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 class="text-white flex items-center mb-4">
+                                <i class="fas fa-star mr-2"></i>
+                                درجة الحرارة مقابل الصلاحية للحياة
+                            </h3>
+                            <div class="chart-container">
+                                <i class="fas fa-scatter-chart text-4xl"></i>
+                                <p class="mt-2">مخطط الانتشار</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comparison Tab -->
+                <div id="comparison-tab" class="tab-content hidden">
+                    <div class="card">
+                        <h3 class="text-white flex items-center mb-4">
+                            <i class="fas fa-globe mr-2"></i>
+                            مقارنة أفضل الكواكب مع الأرض
+                        </h3>
+                        
+                        <div class="relative mb-6">
+                            <img src="https://images.unsplash.com/photo-1639653279211-09958a51fb00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwbGFuZXQlMjBlYXJ0aCUyMGNvbXBhcmlzb258ZW58MXx8fHwxNzU4MDUxMDE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                                 alt="Planet Earth comparison" 
+                                 class="w-full h-48 object-cover rounded-lg opacity-60">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <h4 class="text-2xl text-white">الأرض مقابل ExoAI-2024-004</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <h4 class="text-lg text-cyan-400">الأرض 🌍</h4>
+                                <div class="space-y-2 text-gray-300">
+                                    <div class="flex justify-between">
+                                        <span>الحجم:</span>
+                                        <span>1.0 (مرجع)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>درجة الحرارة:</span>
+                                        <span>15°C</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>الكتلة:</span>
+                                        <span>1.0 (مرجع)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>الغلاف الجوي:</span>
+                                        <span>نيتروجين، أكسجين</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <h4 class="text-lg text-purple-400">ExoAI-2024-004 🪐</h4>
+                                <div class="space-y-2 text-gray-300">
+                                    <div class="flex justify-between">
+                                        <span>الحجم:</span>
+                                        <span class="text-green-400">1.0 (مثالي)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>درجة الحرارة:</span>
+                                        <span class="text-green-400">18°C (مثالي)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>الكتلة:</span>
+                                        <span class="text-green-400">1.0 (مثالي)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>الغلاف الجوي:</span>
+                                        <span class="text-green-400">نيتروجين، أكسجين، بخار ماء</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-green-900/20 rounded-lg border border-green-700">
+                            <div class="flex items-center space-x-2 text-green-400">
+                                <i class="fas fa-star"></i>
+                                <span class="font-medium">نتيجة التقييم: ممتاز (95%)</span>
+                            </div>
+                            <p class="text-gray-300 mt-2 text-sm">
+                                هذا الكوكب يظهر خصائص مشابهة جداً للأرض مع إمكانية عالية لوجود الحياة.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scriptNasa.js">
+       
+    </script>
+</body>
+</html>

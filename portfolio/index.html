@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jana bataineh web developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo">Portfolio</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About me </a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">communication</a></li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#home" onclick="closeMobileMenu()">Home</a>
+                <a href="#about" onclick="closeMobileMenu()">About me</a>
+                <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+                <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+                <a href="#contact" onclick="closeMobileMenu()">communication</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>jana bataineh</h1>
+                <h2>Web Developer and UX Designer</h2>
+                <p>
+                    Hello! I'm a web developer specializing in building modern, responsive web applications. I love transforming creative ideas into exceptional digital experiences.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Show my work</a>
+                    <a href="#contact" class="btn btn-outline">Contact me</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/JanaBataineh" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jana-bataineh-46517a27a/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="janabataineh49@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="scroll-indicator" onclick="scrollToSection('about')">
+                    <i class="fas fa-chevron-down" style="font-size: 2rem;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-bg">
+        <div class="container">
+            <h2 class="section-title">About me</h2>
+            <p class="section-subtitle">
+            A web developer passionate about the latest technologies, 
+            I focus on creating outstanding user experiences and high-performance
+             web applications using development best practices.  
+            </p>
+            
+            <div class="about-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web development </h3>
+                    <p>Extensive experience in javascript, css, html and latest web technologies </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>  Design beautiful, user-friendly user interfaces that focus on user experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3> Outstanding performance</h3>
+                    <p> Improve performance and loading speed to ensure a smooth and fast user experience.</p>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <div>
+                    <h3> My development journey</h3>
+                    <p style="margin-bottom: 1rem;">
+                        I began my programming journey three years ago, and during this time, I've developed numerous applications and websites. I love continuous learning and keeping up with the latest web technologies.
+                    </p>
+                    <p>
+I believe that good development combines clean code, beautiful design, and outstanding performance, and that's what I strive for in every project I work on.                    </p>
+                </div>
+                <div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <span>24.9%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 24.9%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>html</span>
+                            <span>64.6%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 64.6%"></div>
+                        </div>
+                    </div>
+                  
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>css</span>
+                            <span>10.5%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 10.5%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills and techniques </h2>
+            <p class="section-subtitle">
+A comprehensive set of techniques and tools I master to create integrated digital solutions.            </p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Libraries/Frameworks</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">MERN Stack</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools / Platforms</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">canva</span>
+                        <span class="skill-tag">JDK</span>
+                        <span class="skill-tag">Apache NetBeans IDE </span>
+                        <span class="skill-tag">Vercel </span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Design & Others</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Performance Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-bg">
+        <div class="container">
+            <h2 class="section-title">Featured projects </h2>
+            <p class="section-subtitle">
+A selection of my work that reflects my experience in developing integrated digital solutions.            </p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('nasaPproject.png')">
+                        <div class="project-overlay">
+                            <a href="nasa/indexNasa.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/NASA.io" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ExoAI - اكتشاف الكواكب الخارجية  </h3>
+                        <p class="project-description">
+                          منصة فلكية متقدمة لاكتشاف الكواكب خارج نظامنا الشمسي، تجمع بين أحدث تقنيات الرصد وتحليل البيانات باستخدام الذكاء الاصطناعي وخوارزميات تعلم الآلة لتحديد الكواكب المحتملة بدقة وموثوقية.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                            <span class="project-tag">javascript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('QuranicCenter.png')">
+                        <div class="project-overlay">
+                            <a href="Quranic Center/front -end/index.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/Quranic-Center.io" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">تطبيق معاهد الوحي</h3>
+                        <p class="project-description">
+منصة شاملة للعثور على أفضل المراكز القرآنية في المملكة الاردنية الهاشمية 
+والدورات المتاحة فيها. اكتشف مراكز التحفيظ المعتمدة والمعلمين المؤهلين       
+                 </p>
+                        <div class="project-tags">
+                              <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                            <span class="project-tag">javascript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('Muslim.png')">
+                        <div class="project-overlay">
+                            <a href="Muslim/indexMuslim.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/Muslim.io" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> ما لا يسع للمسلمة جهله</h3>
+                        <p class="project-description">
+موقع متخصص لتوعية المسلمة بما يجب عليها معرفته
+
+                        </p>
+                        <div class="project-tags">
+                             <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                            <span class="project-tag">javascript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                 <div class="container">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('The Little Taco Shop.png')">
+                        <div class="project-overlay">
+                            <a href="The Little Taco Shop/index.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/html-project.io/tree/main/project%201" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">The Little Taco Shop </h3>
+                        <p class="project-description">
+متجر مختص ببيع التاكو بأنواعه المختلفة مع تصميم عصري وجذاب
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                   
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('Calculator.png')">
+                        <div class="project-overlay">
+                            <a href="Calculator/indexCalculator.HTML" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/js.io/tree/main/Calculator" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> Calculator </h3>
+                        <p class="project-description">
+JavaScript Calculator Project                 </p>
+                        <div class="project-tags">
+                              <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                            <span class="project-tag">javascript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('Registration.png')">
+                        <div class="project-overlay">
+                            <a href="Registration/Registration.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/CSSproject.io-/tree/main/Create%20Account" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> Create Account  </h3>
+                     
+                        <div class="project-tags">
+                             <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('logIn.png')">
+                        <div class="project-overlay">
+                            <a href="log In/index (1).html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/CSSproject.io-/tree/main/login%20page" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">log In </h3>
+                        <p class="project-description">
+صفحة تسجيل دخول     
+                   </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                                               <span class="project-tag">css</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('Power\ Grid\ store\ or\ HomePage.png')">
+                        <div class="project-overlay">
+                            <a href="Power Grid store or HomePage/index (1).html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/CSSproject.io-/tree/main/New%20folder" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> Power Grid: store or HomePage</h3>
+                        <p class="project-description">
+JavaScript Calculator Project                 </p>
+                        <div class="project-tags">
+                              <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('Profile\ Card.png')">
+                        <div class="project-overlay">
+                            <a href="Profile Card/Profile Card.HTML" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/CSSproject.io-/tree/main/Profile%20Card" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> Profile Card  </h3>
+                     
+                        <div class="project-tags">
+                             <span class="project-tag">HTML</span>
+                            <span class="project-tag">css</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="projects-grid" style="width:fit-content;">
+                <div class="project-card" >
+                    <div class="project-image" style="background-image: url('Responsive\ Webage\ Home\ main.png')">
+                        <div class="project-overlay">
+                            <a href="Responsive Webage Home main/index.html" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> عرض المشروع
+                            </a>
+                            <a href="https://github.com/JanaBataineh/CSSproject.io-/tree/main/Responsive%20Webage%20Home%20main" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> الكود
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"> Responsive Webage Home main </h3>
+                        <p class="project-description">
+صفحة تسجيل دخول     
+                   </p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                                               <span class="project-tag">css</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                
+             
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="margin-bottom: 2rem; color: var(--muted-foreground);">
+                    Want to see more of my work?
+                </p>
+                <a href="https://github.com/JanaBataineh" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-github"></i> 
+View all projects on GitHub                </a>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact me</h2>
+        
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact information </h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>e-mail</h4>
+                            <a href="mailto:janabataineh49@gmail.com">janabataineh49@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>phone number </h4>
+                            <a href="tel:+966501234567">+962770314636</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>location</h4>
+                            <span> Jordan ,Irbid</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Follow me on </h4>
+                        <div class="social-links">
+                            <a href="https://github.com/JanaBataineh" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/jana-bataineh-46517a27a/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3> jana bataineh</h3>
+                    <p>
+Web Developer and UX Designer                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links </h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About me</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Project</a>
+                        <a href="#contact">communication</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>My services</h4>
+                    <div class="footer-links">
+                        <span>Web application development  </span>
+                        <span> User Interface Design </span>
+                        <span>Improve performance </span>
+                        <span>Technical Consulting </span>
+                        <span>Maintenance and development </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+               
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js">
+    
+    </script>
+</body>
+</html>
